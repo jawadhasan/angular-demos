@@ -1,0 +1,39 @@
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Quote</th>
+                <th>Author</th>
+                <th>createdAt</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let quote of quotes">
+
+                <td>{{ quote.id }}</td>
+                <td>{{ quote.quoteTitle }}</td>
+                <td> {{ quote.quoteText }}</td>
+                <td> {{ quote.author }}</td>
+                <td> {{ quote.createdAt }}</td>
+                <td>
+                    <button class="btn btn-primary" (click)="selectQuote(quote)"> Show details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="card text-center" *ngIf="selectedQuote">
+        <div class="card-header">
+            # {{selectedQuote.id}}
+        </div>
+        <div class="card-block">
+            <h4 class="card-title">{{selectedQuote.title}}</h4>
+            <p class="card-text">
+                {{selectedQuote.quoteText}}
+            </p>
+        </div>
+
+    </div>
+</div>
