@@ -18,7 +18,7 @@ export class DataService {
     return this.products;
   }
 
-  public createContact(product: any){
+  public createProduct(product: any){
     this.products.push(product);
   }
 }
