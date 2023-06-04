@@ -28,8 +28,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Adding a service to services folder
 
-Run `ng g s services/data` for adding a service.
+Run `ng g s services/data` or `ng g s ./quotes/services/quotes` for adding a service.
 
 ## Adding a component to a module
 
-Run `ng g c ./products/product-list  --module product.module` for adding a component to a module.
+Run `ng g c ./quotes/components/quotes-list  --module quotes.module` for adding a component to a module.
