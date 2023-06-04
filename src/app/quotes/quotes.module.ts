@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { QuotesRoutingModule } from './quotes-routing.module';
 import { QuotesComponent } from './components/quotes/quotes.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { QuotesComponent } from './components/quotes/quotes.component';
   ],
   imports: [
     CommonModule,
-    QuotesRoutingModule
+    QuotesRoutingModule,
+    SharedModule
   ]
 })
 export class QuotesModule { }
