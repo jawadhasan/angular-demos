@@ -32,4 +32,4 @@ Run `ng g s services/data` for adding a service.
 
 ## Adding a component to a module
 
-Run `ng g c /products/components/product-list --module products` for adding a component to a module.
+Run `ng g c ./products/product-list  --module product.module` for adding a component to a module.
