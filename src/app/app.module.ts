@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 import { ProductModule } from './products/product.module';
 import { SharedModule } from './shared/shared.module';
 import { SampleComponent } from './components/sample/sample.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleComponent
+    SampleComponent,
+    AboutComponent,
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
