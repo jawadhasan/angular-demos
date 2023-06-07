@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
     <hr />
     <div *ngIf="!addMode" class="col col-md-3">
       <div *ngFor="let device of devices">
-        <app-device-card [device]="device" ></app-device-card>
+        <app-device-card [device]="device" (demo)="acceptData($event)" ></app-device-card>
       </div>
     </div>
     <div *ngIf="addMode">
