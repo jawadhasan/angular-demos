@@ -8,6 +8,10 @@ import { SharedModule } from './shared/shared.module';
 import { SampleComponent } from './components/sample/sample.component';
 import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
+import { DevicesComponent } from './components/devices/devices.component';
+import { DeviceCardComponent } from './components/devices/device-card.component';
+import { DeviceCreateComponent } from './components/devices/device-create.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,13 +20,17 @@ import { HomeComponent } from './components/home/home.component';
     SampleComponent,
     AboutComponent,
     HomeComponent,
+    DevicesComponent,
+    DeviceCardComponent,
+    DeviceCreateComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProductModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
