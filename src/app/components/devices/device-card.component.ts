@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DeviceService } from './device.service';
 
 @Component({
   selector: 'app-device-card',
@@ -18,14 +19,14 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class DeviceCardComponent implements OnInit {
   @Input() device: any;
-
   @Output() demo = new EventEmitter<any>();
 
-  constructor() {}
+  constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {}
 
   clicked(){
-    this.demo.emit(this.device.name + `clicked`);
+    //this.demo.emit(this.device.name + `clicked`);
+    this.deviceService.deviceClicked.emit(this.device);
   }
 }

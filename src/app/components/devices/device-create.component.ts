@@ -47,7 +47,6 @@ export class DeviceCreateComponent {
   @Output() saveNewDevice = new EventEmitter<any>();
   @Output() cancelNewDevice = new EventEmitter();
 
-
   device: any = {}
 
   constructor() {}
@@ -55,14 +54,11 @@ export class DeviceCreateComponent {
   ngOnInit(): void {}
 
   createDevice() {
-    //emit to parent
-    this.saveNewDevice.emit(this.device);
+    this.saveNewDevice.emit(this.device);  //emit to parent
   }
 
-  //emit to parent
   cancel() {
-    this.cancelNewDevice.emit();
+    this.cancelNewDevice.emit();  //emit to parent
   }
-
 
 }
