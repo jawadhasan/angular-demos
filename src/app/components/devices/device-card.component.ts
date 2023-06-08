@@ -4,13 +4,13 @@ import { DeviceService } from './device.service';
 @Component({
   selector: 'app-device-card',
   template: `
-    <div class="card">
+    <div class="card text-white bg-danger mb-3">
       <div class="card-body">
         <h5 class="card-title">{{device.name}}</h5>
-        <p class="card-text">
-          {{device.description}}<br />
-          IP {{device.ip}} : Port {{device.port}}
-        </p>
+
+        <p class="card-text">IP {{device.ip}} : Port {{device.port}} </p>
+        <p>{{device.description}}</p>
+        <p>Status</p>
         <button (click)="clicked()" class="btn btn-warning">Click</button>
       </div>
     </div>`,

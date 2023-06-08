@@ -12,17 +12,20 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { DeviceCardComponent } from './components/devices/device-card.component';
 import { DeviceCreateComponent } from './components/devices/device-create.component';
 import { FormsModule } from '@angular/forms';
+import { TempRefSampleComponent } from './components/sample/tempref-sample.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SampleComponent,
     AboutComponent,
     HomeComponent,
     DevicesComponent,
     DeviceCardComponent,
-    DeviceCreateComponent
+    DeviceCreateComponent,
+
+    SampleComponent,
+    TempRefSampleComponent
 
   ],
   imports: [

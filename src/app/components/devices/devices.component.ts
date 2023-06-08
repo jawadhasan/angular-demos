@@ -10,11 +10,20 @@ import { DeviceService } from './device.service';
     </button>
     <hr />
 
-
     <div *ngIf="!addMode" class="row">
-      <div *ngFor="let device of devices" class="col-4 my-3">
-        <app-device-card  [device]="device">
-        </app-device-card>
+
+      <div class="col col-md-8">
+        <p class="bg-info">Col-1</p>
+        <div class="row">
+          <!-- Cards List -->
+          <div *ngFor="let device of devices" class="col-4 my-3">
+            <app-device-card [device]="device"></app-device-card>
+          </div>
+        </div>
+      </div>
+
+      <div class="col col-md-4 bg-light">
+        Col-2
       </div>
     </div>
 
@@ -27,6 +36,7 @@ import { DeviceService } from './device.service';
     </div>
 </div> -->
 
+    <!-- AddForm -->
     <div *ngIf="addMode">
       <app-device-create
         (saveNewDevice)="saveDevice($event)"

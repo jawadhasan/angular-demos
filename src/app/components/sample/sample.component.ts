@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-sample',
@@ -9,10 +9,20 @@ import { Component } from '@angular/core';
     <input type="text" (keydown)="showKey($event)" />
 
     <button class="btn btn-info" (click)="upQuantity()">Update Qty</button>
+
+    <button class="btn btn-danger" (click)="child.hello()">Call ChildHello (@ViewChild())</button>
+    <hr />
+    <!-- In Angular, to refer to any component, we need to put # with a string. -->
+    <app-tempref-sample #child></app-tempref-sample>
   </div>`,
 })
 export class SampleComponent {
   title = 'Sample component';
+
+  //@ViewChild decorator is used to get the reference of the component.
+  @ViewChild('child') child;
+
+
   data = [
     { id: 1, name: 'item-1', price: 10 },
     { id: 2, name: 'item-2', price: 20 },
@@ -37,5 +47,10 @@ export class SampleComponent {
 
   getCoords(event: any) {
     console.log(event.clientX + ' : ' + event.clientY);
+  }
+
+  // We can use the @ViewChild variable into ngAfterViewInit(). We can't access the @ViewChild variable in ngOnInit, ngOnChanges, or ngDoCheck because it can be accessed only after our view is initialized.
+  ngAfterViewInit(){
+    //this.child.hello();
   }
 }
