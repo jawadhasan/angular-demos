@@ -3,18 +3,17 @@ import { DeviceService } from './device.service';
 
 @Component({
   selector: 'app-device-card',
-  template: `<div>
-    <div class="card" style="width: 20rem;">
+  template: `
+    <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{device.name}}</h5>
         <p class="card-text">
           {{device.description}}<br />
           IP {{device.ip}} : Port {{device.port}}
         </p>
-        <button (click)="clicked()" class="btn btn-primary">Click</button>
+        <button (click)="clicked()" class="btn btn-warning">Click</button>
       </div>
-    </div>
-  </div>`,
+    </div>`,
   styles: [''],
 })
 export class DeviceCardComponent implements OnInit {
