@@ -13,10 +13,10 @@ import { DeviceService } from './device.service';
     <div *ngIf="!addMode" class="row">
 
       <div class="col col-md-8">
-        <p class="bg-info">Col-1</p>
+        <p>Col-1</p>
         <div class="row">
           <!-- Cards List -->
-          <div *ngFor="let device of devices" class="col-4 my-3">
+          <div *ngFor="let device of devices" class="col-6 my-3">
             <app-device-card [device]="device"></app-device-card>
           </div>
         </div>

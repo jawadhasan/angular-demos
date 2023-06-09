@@ -3,17 +3,23 @@ import { DeviceService } from './device.service';
 
 @Component({
   selector: 'app-device-card',
-  template: `
-    <div class="card text-white bg-danger mb-3">
-      <div class="card-body">
-        <h5 class="card-title">{{device.name}}</h5>
+  template: ` <div class="card  bg-light mb-3">
+    <div class="card-header ">
+      {{ device.name }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
 
-        <p class="card-text">IP {{device.ip}} : Port {{device.port}} </p>
-        <p>{{device.description}}</p>
-        <p>Status</p>
+      <p class="card-text">IP {{ device.ip }} : Port {{ device.port }}</p>
+      <p>{{ device.description }}</p>
+      <p>Status</p>
+      <div class="card-footer ">
         <button (click)="clicked()" class="btn btn-warning">Click</button>
+        &nbsp;
+        <button (click)="detailClicked()" class="btn btn-info">Details</button>
       </div>
-    </div>`,
+    </div>
+  </div>`,
   styles: [''],
 })
 export class DeviceCardComponent implements OnInit {
@@ -24,8 +30,12 @@ export class DeviceCardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  clicked(){
+  clicked() {
     //this.demo.emit(this.device.name + `clicked`);
     this.deviceService.deviceClicked.emit(this.device);
+  }
+
+  detailClicked() {
+    alert('todo');
   }
 }
