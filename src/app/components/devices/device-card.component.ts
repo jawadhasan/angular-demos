@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DeviceService } from './device.service';
+import { ToastrService } from 'src/app/services/toastr.service';
+
 
 @Component({
   selector: 'app-device-card',
@@ -26,7 +28,7 @@ export class DeviceCardComponent implements OnInit {
   @Input() device: any;
   @Output() demo = new EventEmitter<any>();
 
-  constructor(private deviceService: DeviceService) {}
+  constructor(private toastr:ToastrService ,private deviceService: DeviceService) {}
 
   ngOnInit(): void {}
 
@@ -36,6 +38,6 @@ export class DeviceCardComponent implements OnInit {
   }
 
   detailClicked() {
-    alert('todo');
+    this.toastr.success(this.device.name);
   }
 }
