@@ -13,6 +13,9 @@ import { DeviceCardComponent } from './components/devices/device-card.component'
 import { DeviceCreateComponent } from './components/devices/device-create.component';
 import { FormsModule } from '@angular/forms';
 import { TempRefSampleComponent } from './components/sample/tempref-sample.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NotesListComponent } from './components/notes/notes-list.component';
+import { NotesCardComponent } from './components/notes/notes-card.component';
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { TempRefSampleComponent } from './components/sample/tempref-sample.compo
     DeviceCreateComponent,
 
     SampleComponent,
-    TempRefSampleComponent
+    TempRefSampleComponent,
+    NotesListComponent,
+    NotesCardComponent
 
   ],
   imports: [
@@ -33,7 +38,8 @@ import { TempRefSampleComponent } from './components/sample/tempref-sample.compo
     AppRoutingModule,
     ProductModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
