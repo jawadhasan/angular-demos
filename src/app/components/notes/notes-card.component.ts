@@ -9,6 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
     <div class="card-body">
       <p class="card-text">{{ note.content }}</p>
       <p>{{ note.details }}</p>
+      <p>{{ note.categoryId }}</p>
     </div>
   </div>`,
   styles: [''],
