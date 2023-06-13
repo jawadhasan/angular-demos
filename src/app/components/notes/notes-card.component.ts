@@ -8,8 +8,9 @@ import { Component, Input, OnInit } from '@angular/core';
     </div>
     <div class="card-body">
       <p class="card-text">{{ note.content }}</p>
-      <p>{{ note.details }}</p>
-      <p>{{ note.categoryId }}</p>
+      <div [innerHTML]="note.details"></div>
+      <!-- <textarea id="w3review" name="w3review" rows="4" cols="40">{{ note.details }}</textarea> -->
+      <!-- <p>{{ note.categoryId }}</p> -->
     </div>
   </div>`,
   styles: [''],

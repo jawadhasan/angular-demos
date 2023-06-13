@@ -40,8 +40,8 @@ export class NotesListComponent implements OnInit {
   categories: any[] = [
     { id: 0, name: 'ALL' },
     { id: 1, name: 'Docker CLI' },
-    { id: 10, name: 'Linux CLI' },
-
+    { id: 10, name: 'Linux' },
+    { id: 90, name: 'AWS' },
     { id: 100, name: 'General' },
   ];
   constructor(private apiService: ApiService) {}
@@ -51,10 +51,14 @@ export class NotesListComponent implements OnInit {
     this.apiService.getNotes().subscribe(
       (data: any) => {
         console.log(data);
+
+
+
+
         this.notes = data;
         this.orgNotes = data; //saving copy of the original data
 
-        this.selectedCategory = this.categories[0];//todo //this.categories.find(cat => cat.id === 20); //first category as default
+        this.selectedCategory = this.categories[0]; //todo //this.categories.find(cat => cat.id === 20); //first category as default
       },
       (err: any) => console.log(err)
     ); //this.notes = data.result);
