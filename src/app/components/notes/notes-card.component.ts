@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 @Component({
   selector: 'app-notes-card',
   template: `<div class="card   mb-3">
-    <div class="card-header text-white bg-danger ">
+    <div class="card-header text-white bg-primary ">
       <h6>{{ note.title }}</h6>
     </div>
     <div class="card-body">

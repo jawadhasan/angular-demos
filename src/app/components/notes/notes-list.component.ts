@@ -41,7 +41,11 @@ export class NotesListComponent implements OnInit {
     { id: 0, name: 'ALL' },
     { id: 1, name: 'Docker CLI' },
     { id: 10, name: 'Linux' },
+
+    { id: 50, name: 'JavaScript' },
     { id: 90, name: 'AWS' },
+    { id: 95, name: 'Agile' },
+
     { id: 100, name: 'General' },
   ];
   constructor(private apiService: ApiService) {}
