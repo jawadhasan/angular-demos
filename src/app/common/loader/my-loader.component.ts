@@ -6,7 +6,7 @@ import { LoaderService } from './loader.service';
   template: `
     <div class="progress-loader" [hidden]="!loading">
     <div class="loading-spinner">
-        <img src="../../../assets/images/hive.svg">
+        <img src="../../assets/images/hive.svg">
         <span class="loading-message">Please wait...</span>
     </div>
 </div>
