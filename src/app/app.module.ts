@@ -13,14 +13,20 @@ import { DeviceCardComponent } from './components/devices/device-card.component'
 import { DeviceCreateComponent } from './components/devices/device-create.component';
 import { FormsModule } from '@angular/forms';
 import { TempRefSampleComponent } from './components/sample/tempref-sample.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NotesListComponent } from './components/notes/notes-list.component';
 import { NotesCardComponent } from './components/notes/notes-card.component';
-
+import { MyLoaderComponent } from './common/loader/my-loader.component';
+import { LoaderService } from './common/loader/loader.service';
+import { LoaderInterceptor } from './common/loader/loader.Interceptor.service';
+import { HeaderComponent } from './common/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    MyLoaderComponent,
+
     AboutComponent,
     HomeComponent,
     DevicesComponent,
@@ -30,8 +36,7 @@ import { NotesCardComponent } from './components/notes/notes-card.component';
     SampleComponent,
     TempRefSampleComponent,
     NotesListComponent,
-    NotesCardComponent
-
+    NotesCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +44,16 @@ import { NotesCardComponent } from './components/notes/notes-card.component';
     ProductModule,
     SharedModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
