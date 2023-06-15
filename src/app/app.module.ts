@@ -19,12 +19,13 @@ import { NotesCardComponent } from './components/notes/notes-card.component';
 import { MyLoaderComponent } from './common/loader/my-loader.component';
 import { LoaderService } from './common/loader/loader.service';
 import { LoaderInterceptor } from './common/loader/loader.Interceptor.service';
-import { HeaderComponent } from './common/header.component';
+import { HeaderComponent } from './header.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+   HeaderComponent,
     MyLoaderComponent,
 
     AboutComponent,
