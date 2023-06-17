@@ -20,6 +20,7 @@ import { MyLoaderComponent } from './common/loader/my-loader.component';
 import { LoaderService } from './common/loader/loader.service';
 import { LoaderInterceptor } from './common/loader/loader.Interceptor.service';
 import { HeaderComponent } from './header.component';
+import { ConvertToSpaces } from './common/convert-to-space.pipe';
 
 
 @NgModule({
@@ -38,6 +39,8 @@ import { HeaderComponent } from './header.component';
     TempRefSampleComponent,
     NotesListComponent,
     NotesCardComponent,
+
+    ConvertToSpaces
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { HeaderComponent } from './header.component';
     SharedModule,
     FormsModule,
     HttpClientModule,
+
   ],
   providers: [
     LoaderService,

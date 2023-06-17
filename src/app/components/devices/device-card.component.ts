@@ -7,7 +7,7 @@ import { ToastrService } from 'src/app/services/toastr.service';
   selector: 'app-device-card',
   template: ` <div class="card  bg-light mb-3">
     <div class="card-header ">
-      {{ device.name }}
+      {{ device.name | ConvertToSpaces:'-' }}
     </div>
     <div class="card-body">
       <h5 class="card-title"></h5>
