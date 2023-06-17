@@ -9,8 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
     <div class="card-body">
       <p class="card-text">{{ note.content }}</p>
       <div [innerHTML]="note.details"></div>
-      <!-- <textarea id="w3review" name="w3review" rows="4" cols="40">{{ note.details }}</textarea> -->
-      <!-- <p>{{ note.categoryId }}</p> -->
+      <br />
+      <b>{{ note.categoryId | DisplayNoteCategory }}</b>
     </div>
   </div>`,
   styles: [''],

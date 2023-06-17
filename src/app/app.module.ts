@@ -21,6 +21,7 @@ import { LoaderService } from './common/loader/loader.service';
 import { LoaderInterceptor } from './common/loader/loader.Interceptor.service';
 import { HeaderComponent } from './header.component';
 import { ConvertToSpaces } from './common/convert-to-space.pipe';
+import { DisplayNoteCategory } from './components/notes/display-note-category.pipe';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { ConvertToSpaces } from './common/convert-to-space.pipe';
     NotesListComponent,
     NotesCardComponent,
 
-    ConvertToSpaces
+    //pipes
+    ConvertToSpaces,
+    DisplayNoteCategory
   ],
   imports: [
     BrowserModule,
