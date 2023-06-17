@@ -9,11 +9,17 @@ import { Component, ViewChild } from '@angular/core';
     <input type="text" (keydown)="showKey($event)" />
 
     <button class="btn btn-info" (click)="upQuantity()">Update Qty</button>
+    <hr>
 
-    <button class="btn btn-danger" (click)="child.hello()">Call ChildHello (@ViewChild())</button>
+    <h3>Template Reference Variable Parent</h3>
+
+    <button class="btn btn-primary" (click)="child.hello()">Call ChildHello()</button>
+    <p>{{child.title}}</p>
     <hr />
+
     <!-- In Angular, to refer to any component, we need to put # with a string. -->
     <app-tempref-sample #child></app-tempref-sample>
+
   </div>`,
 })
 export class SampleComponent {
@@ -49,8 +55,14 @@ export class SampleComponent {
     console.log(event.clientX + ' : ' + event.clientY);
   }
 
-  // We can use the @ViewChild variable into ngAfterViewInit(). We can't access the @ViewChild variable in ngOnInit, ngOnChanges, or ngDoCheck because it can be accessed only after our view is initialized.
+  // We can use the @ViewChild variable into ngAfterViewInit().
+
+  //We can't access the @ViewChild variable in ngOnInit, ngOnChanges, or ngDoCheck
+  //because it can be accessed only after our view is initialized.
+
   ngAfterViewInit(){
-    //this.child.hello();
+    console.log(this.child.title);
+    //this.child.hello2();
   }
+
 }

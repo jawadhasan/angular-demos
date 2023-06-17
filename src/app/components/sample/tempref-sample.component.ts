@@ -13,6 +13,10 @@ export class TempRefSampleComponent {
   title = 'TempRef Sample component';
 
   hello(){
-    alert('hello from child component using template reference variable (@ViewChild)');
+    alert('hello from child component');
+  }
+
+  hello2(){
+    alert('hello2 from child component');
   }
 }
