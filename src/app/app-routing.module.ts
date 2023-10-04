@@ -6,10 +6,12 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NotesListComponent } from './components/notes/notes-list.component';
+import { FormsSampleComponent } from './components/sample/forms-sample.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'sample', component: SampleComponent },
+  { path: 'forms', component: FormsSampleComponent },
   {
     path: 'quotes',
     loadChildren: () =>
@@ -17,6 +19,8 @@ const routes: Routes = [
   },
   { path: 'devices', component: DevicesComponent },
   { path: 'notes', component: NotesListComponent },
+
+
   { path: 'about', component: AboutComponent },
   { path: '', component: HomeComponent },
 ];

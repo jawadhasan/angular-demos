@@ -11,7 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { DeviceCardComponent } from './components/devices/device-card.component';
 import { DeviceCreateComponent } from './components/devices/device-create.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TempRefSampleComponent } from './components/sample/tempref-sample.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NotesListComponent } from './components/notes/notes-list.component';
@@ -22,6 +22,7 @@ import { LoaderInterceptor } from './common/loader/loader.Interceptor.service';
 import { HeaderComponent } from './header.component';
 import { ConvertToSpaces } from './common/convert-to-space.pipe';
 import { DisplayNoteCategory } from './components/notes/display-note-category.pipe';
+import { FormsSampleComponent } from './components/sample/forms-sample.component';
 
 
 @NgModule({
@@ -38,6 +39,8 @@ import { DisplayNoteCategory } from './components/notes/display-note-category.pi
 
     SampleComponent,
     TempRefSampleComponent,
+    FormsSampleComponent,
+
     NotesListComponent,
     NotesCardComponent,
 
@@ -51,6 +54,7 @@ import { DisplayNoteCategory } from './components/notes/display-note-category.pi
     ProductModule,
     SharedModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
 
   ],

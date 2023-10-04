@@ -49,6 +49,7 @@ Run `aws cloudformation update-stack --stack-name ngdemos  --template-body file:
 
 ## Build and Deploy
 Run `ng build` from web folder...>dist folder.
+RUN `cd dist`
 Run `aws s3 sync . s3://ngdemos.awsclouddemos.com `
 
 
