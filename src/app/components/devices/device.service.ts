@@ -24,7 +24,7 @@ export class DeviceService {
       id: 456,
       ip: "192.168.0.202",
       port: 502,
-      name: "Device-2",
+      name: "local",
       status: "Stop",
       description: "This is a test description for device-2"
      },
@@ -33,7 +33,7 @@ export class DeviceService {
       id: 457,
       ip: "192.168.0.203",
       port: 502,
-      name: "Device-3",
+      name: "lab",
       status: "Stop",
       description: "This is a test description for device-3"
      },

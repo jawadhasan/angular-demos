@@ -11,20 +11,28 @@ import { DeviceService } from './device.service';
     <hr />
 
     <div *ngIf="!addMode" class="row">
+      Filter:
+      <input
+        class="form-control"
+        name="devicefilter"
+        type="text"
+        #filterElement
+        [(ngModel)]="listFilter"
+      />
+
+      <p>filter display: {{ listFilter }}</p>
 
       <div class="col col-md-8">
         <p>Col-1</p>
         <div class="row">
           <!-- Cards List -->
-          <div *ngFor="let device of devices" class="col-6 my-3">
+          <div *ngFor="let device of filteredDevices" class="col-6 my-3">
             <app-device-card [device]="device"></app-device-card>
           </div>
         </div>
       </div>
 
-      <div class="col col-md-4 bg-light">
-        Col-2
-      </div>
+      <div class="col col-md-4 bg-light">Col-2</div>
     </div>
 
     <!-- <div class="row card-group">
@@ -49,6 +57,18 @@ import { DeviceService } from './device.service';
 export class DevicesComponent implements OnInit {
   addMode: boolean = false;
   devices: any = [];
+  filteredDevices: any[]=[];
+
+  // listFilter:string="";
+  private _listFilter: string;
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.performFilter(value);
+
+  }
 
   //sample only
   presentations = [1, 2, 3, 4, 5, 6, 7].map(
@@ -58,7 +78,10 @@ export class DevicesComponent implements OnInit {
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {
-    this.devices = this.deviceService.getDevices();
+
+    //loading data
+    this.devices = this.deviceService.getDevices(); //original array
+    this.filteredDevices = this.devices; //filtered array
 
     //subscribing to deviceClicked event
     this.deviceService.deviceClicked.subscribe((device: any) => {
@@ -86,5 +109,15 @@ export class DevicesComponent implements OnInit {
 
   cancelDevice() {
     this.addMode = false;
+  }
+
+  performFilter(filterString:string){
+
+    filterString = filterString?.toLocaleLowerCase();//case in-sensitive search
+
+    this.filteredDevices =  this.devices.filter(
+      (device: any) =>  //arrow function for filtering
+        device.name?.toLocaleLowerCase().includes(filterString)
+    )
   }
 }
