@@ -23,6 +23,7 @@ import { HeaderComponent } from './header.component';
 import { ConvertToSpaces } from './common/convert-to-space.pipe';
 import { DisplayNoteCategory } from './components/notes/display-note-category.pipe';
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
+import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FormsSampleComponent } from './components/sample/forms-sample.component
 
     //pipes
     ConvertToSpaces,
-    DisplayNoteCategory
+    DisplayNoteCategory,
+    CanvasDemoComponent
   ],
   imports: [
     BrowserModule,

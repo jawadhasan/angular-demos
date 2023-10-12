@@ -1,0 +1,27 @@
+<h2>{{pageTitle}}</h2>
+
+<div class="row">
+  <div class="col col-md-9">
+
+    <nav class="navbar navbar-light bg-light">
+      <button class="btn btn-primary" (click)="drawRect()">Rectangle</button>
+      <button class="btn btn-primary" (click)="drawLine()">Line</button>
+      <button class="btn btn-primary" (click)="drawPath()">Path</button>
+      <button class="btn btn-primary" (click)="drawCircle()">Circle</button>
+      <button class="btn btn-primary" (click)="drawText()">Text</button>
+      <button class="btn btn-primary" (click)="drawGradient()">Gradient</button>
+      <button class="btn btn-primary" (click)="drawImage()">Image</button>
+      <button class="btn btn-primary" (click)="rotate()">Rotate</button>
+      <button class="btn btn-primary" (click)="scale()">Scale</button>
+      <button class="btn btn-primary" (click)="SaveStateAndRestore()">SaveRestore</button>
+      <button class="btn btn-primary" (click)="drawChart()">Chart</button>
+      <button class="btn btn-primary" (click)="clear()">Clear Canvas</button>
+    </nav>
+
+  </div>
+</div>
+
+
+<canvas #mainCanvas id="mainCanvas" width="700" height="500" class="border">
+  HTML-5 Canvas is not supported on your Browser!
+</canvas>

@@ -7,11 +7,14 @@ import { HomeComponent } from './components/home/home.component';
 import { DevicesComponent } from './components/devices/devices.component';
 import { NotesListComponent } from './components/notes/notes-list.component';
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
+import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'sample', component: SampleComponent },
   { path: 'forms', component: FormsSampleComponent },
+  { path: 'canvas', component: CanvasDemoComponent },
+
   {
     path: 'quotes',
     loadChildren: () =>
