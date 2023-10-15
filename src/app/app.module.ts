@@ -24,6 +24,7 @@ import { ConvertToSpaces } from './common/convert-to-space.pipe';
 import { DisplayNoteCategory } from './components/notes/display-note-category.pipe';
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
+import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.compon
     //pipes
     ConvertToSpaces,
     DisplayNoteCategory,
-    CanvasDemoComponent
+    CanvasDemoComponent,
+    RxjsDemosComponent
   ],
   imports: [
     BrowserModule,

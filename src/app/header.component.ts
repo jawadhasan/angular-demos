@@ -25,6 +25,10 @@ import { Component } from '@angular/core';
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" routerLink="/rxjs">RxJS</a>
+      </li>
+
+      <li class="nav-item">
         <a class="nav-link" routerLink="/forms">Forms</a>
       </li>
 

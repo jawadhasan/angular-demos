@@ -8,12 +8,14 @@ import { DevicesComponent } from './components/devices/devices.component';
 import { NotesListComponent } from './components/notes/notes-list.component';
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
+import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'sample', component: SampleComponent },
   { path: 'forms', component: FormsSampleComponent },
   { path: 'canvas', component: CanvasDemoComponent },
+  { path: 'rxjs', component: RxjsDemosComponent },
 
   {
     path: 'quotes',
