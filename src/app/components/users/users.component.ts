@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UsersService } from '../users.service';
-import { EMPTY, catchError } from 'rxjs';
+import { UsersService } from './users.service';
+import { EMPTY, Subject, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -10,14 +10,17 @@ import { EMPTY, catchError } from 'rxjs';
 })
 export class UsersComponent {
 
+  private errorMessageSubject = new Subject<string>();
+  errorMssage$ = this.errorMessageSubject.asObservable();
+
   users$ = this.userService.users$.pipe(
     catchError((err) => {
-      this.errorMessage = err;
+      this.errorMessageSubject.next(err);
       return EMPTY;
     })
   );
 
-  errorMessage: string = '';
+
 
   constructor(private userService: UsersService) {}
 }

@@ -1,4 +1,7 @@
-{{errorMessage}}
+<div class="alert alert-danger" *ngIf="errorMssage$ | async as errorMessage">
+  {{errorMessage}}
+</div>
+
 
 <div class="container">
   <table class="table table-hover" *ngIf="users$ | async as users">
