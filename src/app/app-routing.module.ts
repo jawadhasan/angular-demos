@@ -9,6 +9,7 @@ import { NotesListComponent } from './components/notes/notes-list.component';
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'forms', component: FormsSampleComponent },
   { path: 'canvas', component: CanvasDemoComponent },
   { path: 'rxjs', component: RxjsDemosComponent },
+  { path: 'users', component: UsersComponent },
 
   {
     path: 'quotes',

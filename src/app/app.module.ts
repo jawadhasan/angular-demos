@@ -25,6 +25,7 @@ import { DisplayNoteCategory } from './components/notes/display-note-category.pi
 import { FormsSampleComponent } from './components/sample/forms-sample.component';
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
+import { UsersComponent } from './components/users/users.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component
     ConvertToSpaces,
     DisplayNoteCategory,
     CanvasDemoComponent,
-    RxjsDemosComponent
+    RxjsDemosComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
