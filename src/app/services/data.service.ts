@@ -18,7 +18,7 @@ export class DataService {
     return this.products;
   }
 
-  public createProduct(product: any){
+  public createProduct(product: any):void{
     this.products.push(product);
   }
 }

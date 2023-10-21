@@ -52,6 +52,7 @@ Run `ng build` from web folder...>dist folder.
 RUN `cd dist`
 Run `aws s3 sync . s3://ngdemos.awsclouddemos.com `
 
+`ng test --source-map=false --watch=false --browsers=ChromeHeadless  --code-coverage`
 
 ### Three levels
 Description.

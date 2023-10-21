@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent {
-  title = 'products-component';
+export class ProductsComponent implements OnInit {
 
+  title = 'Products';
+  products:any[]=[];
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
+  ngOnInit(): void {
+    this.products =  this.dataService.getProducts();
+  }
 }

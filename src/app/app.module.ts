@@ -13,7 +13,7 @@ import { DeviceCardComponent } from './components/devices/device-card.component'
 import { DeviceCreateComponent } from './components/devices/device-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TempRefSampleComponent } from './components/sample/tempref-sample.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { NotesListComponent } from './components/notes/notes-list.component';
 import { NotesCardComponent } from './components/notes/notes-card.component';
 import { MyLoaderComponent } from './common/loader/my-loader.component';
@@ -65,6 +65,7 @@ import { UsersComponent } from './components/users/users.component';
 
   ],
   providers: [
+    HttpClient,
     LoaderService,
     {
       provide: HTTP_INTERCEPTORS,

@@ -111,4 +111,13 @@ export class RxjsDemosComponent implements OnInit, AfterViewInit {
       .pipe(take(2))
       .subscribe((x) => console.log(x));
   }
+
+  mapExample2(){
+
+      //sample only
+  let mapped = [1, 2, 3, 4, 5, 6, 7]
+  .map(it => <any>{ _id: it, title: 'title ' + it }
+  );
+
+  }
 }

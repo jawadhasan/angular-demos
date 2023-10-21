@@ -70,11 +70,6 @@ export class DevicesComponent implements OnInit {
 
   }
 
-  //sample only
-  presentations = [1, 2, 3, 4, 5, 6, 7].map(
-    (it) => <any>{ _id: it, title: 'title ' + it }
-  );
-
   constructor(private deviceService: DeviceService) {}
 
   ngOnInit(): void {

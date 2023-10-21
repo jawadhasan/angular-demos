@@ -1,1 +1,7 @@
-<h6>Products Works!</h6>
+<h3>{{title}}</h3>
+
+<ul>
+  <li *ngFor="let product of products">
+    {{product.serialNo}} {{product.name}}
+  </li>
+</ul>
