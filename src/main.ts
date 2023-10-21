@@ -16,6 +16,6 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 
   // Log performance metrics to the console:
 //reportWebVitals(console.log);
-onCLS(console.log);
-onFID(console.log);
-onLCP(console.log);
+// onCLS(console.log);
+// onFID(console.log);
+// onLCP(console.log);
