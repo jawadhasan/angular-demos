@@ -1,24 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { QuotesService } from '../../services/quotes.service';
 
 @Component({
   selector: 'app-quotes-list',
   templateUrl: './quotes-list.component.html',
-  styleUrls: ['./quotes-list.component.css']
+  styleUrls: ['./quotes-list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuotesListComponent implements OnInit {
+export class QuotesListComponent {
 
+  quotes$ = this.quotesService.quotes$;
 
-  quotes:any;
-  selectedQuote:any;
+  selectedQuote: any;
 
-  constructor(public quotesService: QuotesService) { }
+  constructor(public quotesService: QuotesService) {}
 
-  ngOnInit(): void {
-    this.quotes = this.quotesService.getQuotes();   
-  }
-
-  public selectQuote(quote:any){
+  public selectQuote(quote: any) {
     this.selectedQuote = quote;
   }
 }

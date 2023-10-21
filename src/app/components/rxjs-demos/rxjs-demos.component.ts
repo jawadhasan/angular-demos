@@ -6,6 +6,8 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
+  Subject,
+  Observer,
   concat,
   from,
   fromEvent,
@@ -15,6 +17,7 @@ import {
   of,
   take,
   tap,
+  Observable,
 } from 'rxjs';
 
 import { allProducts, allCategories } from '../../data';
@@ -112,12 +115,39 @@ export class RxjsDemosComponent implements OnInit, AfterViewInit {
       .subscribe((x) => console.log(x));
   }
 
-  mapExample2(){
+  mapExample2() {
+    //sample only
+    let mapped = [1, 2, 3, 4, 5, 6, 7].map(
+      (it) => <any>{ _id: it, title: 'title ' + it }
+    );
+  }
 
-      //sample only
-  let mapped = [1, 2, 3, 4, 5, 6, 7]
-  .map(it => <any>{ _id: it, title: 'title ' + it }
-  );
+  subjectExample() {
+
+    let subject$ = new Subject();
+
+    //subscribing
+    subject$.subscribe(value => console.log(`Observer-1" ${value}`));
+    subject$.subscribe(value => console.log(`Observer-2" ${value}`));
+    //both observers are now added to observers array of subject.
+
+    //subject produce values when their next() method is called:
+
+    //1. calling it directly
+    subject$.next('Hello');
+
+    //2. subject subscribe to another observable and proxy values
+
+    //define a source observable
+    let source$ = new Observable(subscriber=>{
+      subscriber.next('Greetings!');
+    });
+
+    //passing subject as observer
+    source$.subscribe(subject$);
+
 
   }
+
+
 }

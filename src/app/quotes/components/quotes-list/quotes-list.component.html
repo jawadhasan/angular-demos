@@ -1,5 +1,5 @@
 <div class="container">
-    <table class="table table-hover">
+    <table class="table table-hover" *ngIf="quotes$ | async as quotes">
         <thead>
             <tr>
                 <th>#</th>
