@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +9,20 @@ export class UsersService {
   private usersUrl: string =
     'https://kjsa0fp0tb.execute-api.eu-central-1.amazonaws.com/Prod/api/users';
 
+  //action-stream
+  private selectedUserSubject = new BehaviorSubject<any>({});
+  selectedUser$ = this.selectedUserSubject.asObservable();
+
+
+  selectUser(user:any){
+    //only service will access the private subject
+    this.selectedUserSubject.next(user);
+  }
+
+
+
   users$ = this.httpClient
-    .get<any[]>(`${this.usersUrl}`)
+    .get(`${this.usersUrl}`)
     .pipe(catchError(this.handleError));
 
   constructor(private httpClient: HttpClient) {}

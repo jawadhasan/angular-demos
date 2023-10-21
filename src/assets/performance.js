@@ -63,7 +63,7 @@ if ("performance" in window) {
 
   let observer = new PerformanceObserver(performanceCallback);
   // observer.observe({ type: "event", buffered: true });
- observer.observe({ entryTypes: ["event","paint"] });
+ observer.observe({ entryTypes: ["event","paint","first-input"] });
   // observer.observe({ entryTypes: ["first-input",'event','mark', "largest-contentful-paint", 'measure', 'layout-shift','visibility-state','resource','navigation','paint'] });
 } else {
   console.log("performance API not available.");

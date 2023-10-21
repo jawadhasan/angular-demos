@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   ViewChild,
 } from '@angular/core';
@@ -18,24 +19,57 @@ import {
   take,
   tap,
   Observable,
+  mergeAll,
+  BehaviorSubject,
+  ReplaySubject,
+  AsyncSubject,
 } from 'rxjs';
 
 import { allProducts, allCategories } from '../../data';
+import {
+  EmitEvent,
+  EventBusService,
+  Events,
+} from 'src/app/services/event-bus.service';
 
 @Component({
   selector: 'app-rxjs-demos',
   templateUrl: './rxjs-demos.component.html',
   styleUrls: ['./rxjs-demos.component.css'],
 })
-export class RxjsDemosComponent implements OnInit, AfterViewInit {
+export class RxjsDemosComponent implements AfterViewInit {
   apples$: any[] = ['Apple1', 'Apple2'];
 
   @ViewChild('para') para: ElementRef;
   @ViewChild('myButton') myButton: ElementRef;
 
-  constructor() {}
+  constructor(private eventBusService: EventBusService) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    //fromEvent
+
+    const paraStream$ = fromEvent(this.para.nativeElement, 'click').subscribe(
+      () => console.log('para clicked')
+    );
+
+    fromEvent(this.myButton.nativeElement, 'click').subscribe((e) => {
+      console.log('button clicked', e);
+      console.log('RxJS concat(allProducts$, allCategories$)')
+
+      //generally we want to perform some actions
+      let allProucts$ = from(allProducts);
+      let allCategories$ = from(allCategories);
+
+      concat(allProucts$, allCategories$).subscribe((item) =>
+        console.log(item)
+      );
+    });
+
+    //interval
+    //const num = interval(1000).subscribe(console.log);
+  }
+
+  offFromConcatExample() {
     console.log(`of operator`);
     of(this.apples$) //1. Single Array of Apples [Apple1, Apple2] as one single item is emitted.; or of(2,4,6,8)
       .subscribe((item) => console.log(item));
@@ -52,33 +86,6 @@ export class RxjsDemosComponent implements OnInit, AfterViewInit {
     let allCategories$ = from(allCategories);
 
     concat(allProucts$, allCategories$).subscribe((item) => console.log(item));
-  }
-
-  ngAfterViewInit(): void {
-    //fromEvent
-
-    const paraStream$ = fromEvent(this.para.nativeElement, 'click').subscribe(
-      () => console.log('para clicked')
-    );
-
-    // fromEvent(this.myButton.nativeElement, 'click').subscribe((e) =>
-    //   console.log('button clicked', e)
-    // );
-
-    fromEvent(this.myButton.nativeElement, 'click').subscribe((e) => {
-      console.log('button clicked', e);
-
-      //generally we want to perform some actions
-      let allProucts$ = from(allProducts);
-      let allCategories$ = from(allCategories);
-
-      concat(allProucts$, allCategories$).subscribe((item) =>
-        console.log(item)
-      );
-    });
-
-    //interval
-    //const num = interval(1000).subscribe(console.log);
   }
 
   mapExample() {
@@ -123,12 +130,11 @@ export class RxjsDemosComponent implements OnInit, AfterViewInit {
   }
 
   subjectExample() {
-
     let subject$ = new Subject();
 
     //subscribing
-    subject$.subscribe(value => console.log(`Observer-1" ${value}`));
-    subject$.subscribe(value => console.log(`Observer-2" ${value}`));
+    subject$.subscribe((value) => console.log(`Observer-1" ${value}`));
+    subject$.subscribe((value) => console.log(`Observer-2" ${value}`));
     //both observers are now added to observers array of subject.
 
     //subject produce values when their next() method is called:
@@ -139,15 +145,55 @@ export class RxjsDemosComponent implements OnInit, AfterViewInit {
     //2. subject subscribe to another observable and proxy values
 
     //define a source observable
-    let source$ = new Observable(subscriber=>{
+    let source$ = new Observable((subscriber) => {
       subscriber.next('Greetings!');
     });
 
     //passing subject as observer
     source$.subscribe(subject$);
-
-
   }
 
+  behaviorSubjectExample() {
+    let behaviorSubject$ = new BehaviorSubject('BehaviorSubject initial');
 
+    behaviorSubject$.next('Next value');
+
+    behaviorSubject$.subscribe((sub) => console.log(sub));
+  }
+
+  asyncSubjectExample() {
+    let asyncSubject$ = new AsyncSubject();
+
+    asyncSubject$.subscribe((sub) => console.log(sub));
+
+    asyncSubject$.next('Next-1 value');
+    asyncSubject$.next('Next-2 value');
+
+    asyncSubject$.complete();
+  }
+  replaySubjectExample() {
+    let replaySubject$ = new ReplaySubject(3);
+
+    replaySubject$.next('Next-1 value');
+    replaySubject$.next('Next-2 value');
+    replaySubject$.next('Next-3 value');
+    replaySubject$.next('Next-4 value');
+    replaySubject$.next('Next-5 value');
+    replaySubject$.next('Next-6 value');
+
+    //subscribing now
+    replaySubject$.subscribe((sub) => console.log(sub));
+  }
+
+  mergeExample2() {
+    let a$ = of(1, 2);
+    let b$ = of('A', 'B');
+
+    merge(a$, b$).pipe(tap((value) => console.log(value)));
+  }
+
+  raiseEvent() {
+    const cust = { id: 1, name: `event-bus test- ${Date.now()}` };
+    this.eventBusService.emit(new EmitEvent(Events.CustomerSelected, cust));
+  }
 }

@@ -1,6 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { UsersService } from './users.service';
-import { EMPTY, Subject, catchError } from 'rxjs';
+import {
+  BehaviorSubject,
+  EMPTY,
+  Observable,
+  Subject,
+  catchError,
+  combineLatest,
+  map,
+} from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -9,18 +17,47 @@ import { EMPTY, Subject, catchError } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UsersComponent {
+  private _searchFilter: string = '';
+  set searchFilter(value) {
+    this._searchFilter = value;
+    this.listFilterSubject.next(value); //3. emit to actionStream
+  }
+  get searchFilter() {
+    return this._searchFilter;
+  }
 
   private errorMessageSubject = new Subject<string>();
   errorMssage$ = this.errorMessageSubject.asObservable();
 
-  users$ = this.userService.users$.pipe(
-    catchError((err) => {
-      this.errorMessageSubject.next(err);
-      return EMPTY;
-    })
+  //1. create an action-stream
+  listFilterSubject = new BehaviorSubject<string>("");
+  listFilterAction$ = this.listFilterSubject.asObservable();
+
+  //data-stream - previous example
+  // users$ = this.userService.users$.pipe(
+  //   catchError(err=> EMPTY)
+  // );
+
+  //2. combine data-stream with action-stream
+  users$ = combineLatest([
+    this.userService.users$,
+    this.listFilterAction$,
+  ]).pipe(
+    map(([users, listFilterCriteria]) =>
+      //JavaScript array filter
+      users.filter(
+        (user) =>
+          user.firstName
+          .toLocaleLowerCase()
+          .includes(listFilterCriteria) //arrow function for filtering
+      )
+    ),
+    catchError((err) => EMPTY)
   );
 
-
+  selectUser(user:any){
+    this.userService.selectUser(user)
+  }
 
   constructor(private userService: UsersService) {}
 }
