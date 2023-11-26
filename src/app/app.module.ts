@@ -26,6 +26,8 @@ import { FormsSampleComponent } from './components/sample/forms-sample.component
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
 import { UsersComponent } from './components/users/users.component';
+import { FirstInterceptor } from './services/first-interceptor';
+import { SecondInterceptor } from './services/second-interceptor';
 
 
 @NgModule({
@@ -72,6 +74,18 @@ import { UsersComponent } from './components/users/users.component';
       useClass: LoaderInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS, //Token
+      useClass: FirstInterceptor, //actual interceptor,
+      multi: true //shoud be set to true for interceptors
+    },
+    {
+      provide: HTTP_INTERCEPTORS, //Token
+      useClass: SecondInterceptor, //actual interceptor,
+      multi: true //shoud be set to true for interceptors
+    },
+    //and so on... applied in order
+
   ],
   bootstrap: [AppComponent],
 })
