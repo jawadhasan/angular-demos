@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -57,11 +58,27 @@ import { Component } from '@angular/core';
           <button class="pull right" *ngIf="isLoggedIn" (click)="logout()">Logout</button>
         </li> -->
 
-
+    <li>
+      <button class="btn btn-primary" (click)="gotoAbout()">AboutPage</button>
+    </li>
 
     </ul>
   </div>
 </nav>
   `,
 })
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  constructor(private router: Router ){
+
+  }
+
+  gotoAbout(){
+
+    performance.mark('routingStart');
+
+    //routing
+    this.router.navigateByUrl(`/about`)
+
+  }
+}

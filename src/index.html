@@ -14,4 +14,29 @@
   <app-root>Loading App...</app-root>
 </body>
 
+<script>
+
+  window.addEventListener('load', function(){
+    console.log('window.load event handler');
+
+  })
+
+  //or other event instead of unload
+  window.addEventListener('unload', function(){
+
+    const rum = {
+      navigation: performance.timing,
+      resources: performance.getEntriesByType('resources'),
+      marks: performance.getEntriesByType('marks'),
+      measures: performance.getEntriesByType('measures')
+      //..others
+    }
+
+    console.log(rum);
+
+    //Beacon: 64KB data limit in chrome (still more thank cookie limit)
+    //navigator.sendBeacon('/rum/submit', JSON.stringify(rum));
+
+  })
+</script>
 </html>
