@@ -33,10 +33,10 @@ export class UsersComponent {
   listFilterSubject = new BehaviorSubject<string>("");
   listFilterAction$ = this.listFilterSubject.asObservable();
 
-  //data-stream - previous example
+  /*data-stream - previous example
   // users$ = this.userService.users$.pipe(
   //   catchError(err=> EMPTY)
-  // );
+  // )*/
 
   //2. combine data-stream with action-stream
   users$ = combineLatest([

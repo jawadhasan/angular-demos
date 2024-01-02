@@ -10,9 +10,24 @@ import { NotesService } from 'src/app/components/notes/notes.service';
 export class NotesListComponent implements OnInit {
   title: string = 'NOTES';
 
-  // notes$ = this.notesService.notes$.pipe(
-  //     catchError(err=> EMPTY)
-  //   );
+  selectedCategory: any;
+  categories: any[] = [
+    { id: 0, name: 'ALL' },
+    { id: 1, name: 'Docker CLI' },
+    { id: 10, name: 'Linux' },
+
+    { id: 50, name: 'JavaScript' },
+    { id: 90, name: 'AWS' },
+    { id: 95, name: 'Agile' },
+
+    { id: 100, name: 'General' },
+  ];
+  //category select
+  categoryChanged(e): void {
+    this.notesService.selectCategory(e);
+  }
+
+  // notes$ = this.notesService.notes$.pipe(catchError((err) => EMPTY));
 
   notes$ = combineLatest([
     this.notesService.notes$,
@@ -27,27 +42,10 @@ export class NotesListComponent implements OnInit {
     catchError((err) => EMPTY)
   );
 
-  selectedCategory: any;
-  categories: any[] = [
-    { id: 0, name: 'ALL' },
-    { id: 1, name: 'Docker CLI' },
-    { id: 10, name: 'Linux' },
-
-    { id: 50, name: 'JavaScript' },
-    { id: 90, name: 'AWS' },
-    { id: 95, name: 'Agile' },
-
-    { id: 100, name: 'General' },
-  ];
 
   constructor(private notesService: NotesService) {}
 
   ngOnInit(): void {
     this.selectedCategory = this.categories[0];
-  }
-
-  //category select
-  categoryChanged(e): void {
-    this.notesService.selectCategory(e);
   }
 }

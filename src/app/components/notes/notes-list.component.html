@@ -1,18 +1,18 @@
 <div>
   <h3>{{title}}</h3>
 
-  <!-- Select -->
-  <div class="row">
-    <div class="col col-md-4">
-      <select class="form-select" [(ngModel)]="selectedCategory" (change)="categoryChanged(selectedCategory)">
-        <option *ngFor="let category of categories" [ngValue]="category">
-          {{ category.name }}
-        </option>
-      </select>
+    <!-- Select -->
+    <div class="row">
+      <div class="col col-md-4">
+        <select class="form-select" [(ngModel)]="selectedCategory" (change)="categoryChanged(selectedCategory)">
+          <option *ngFor="let category of categories" [ngValue]="category">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
     </div>
-  </div>
 
-  <hr />
+    <hr />
 
    <!-- Cards List -->
   <div class="row" *ngIf="notes$ | async as notes">
