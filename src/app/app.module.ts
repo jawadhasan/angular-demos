@@ -29,6 +29,8 @@ import { UsersComponent } from './components/users/users.component';
 import { FirstInterceptor } from './services/first-interceptor';
 import { SecondInterceptor } from './services/second-interceptor';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -66,6 +68,11 @@ import { StoreModule } from '@ngrx/store';
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({
+      name: 'ng Demos Application Dev Tools',
+      maxAge: 25,
+      logOnly: environment.production
+    }),
 
   ],
   providers: [

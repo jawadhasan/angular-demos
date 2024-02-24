@@ -7,7 +7,7 @@ export const productReducer = createReducer(
   on(createAction('[Product] Toggle Product Code'), state =>{
 
     //handler code
-    console.log('before state',JSON.stringify(state));
+    //console.log('before state',JSON.stringify(state));
 
     //return new state
     return {
