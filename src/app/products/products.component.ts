@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State, getShowProductCode } from './state/productReducer';
+import { State, getShowProductCode } from './state/product.reducer';
 import { ProductsService } from './products.service';
 import { EMPTY, catchError } from 'rxjs';
+
+import * as ProductActions from "./state/product.actions"
 
 @Component({
   selector: 'products',
@@ -35,8 +37,10 @@ export class ProductsComponent implements OnInit {
   }
 
   checkChanged() {
-    this.store.dispatch({
-      type: '[Product] Toggle Product Code',
-    });
+    // this.store.dispatch({
+    //   type: '[Product] Toggle Product Code',
+    // });
+
+    this.store.dispatch(ProductActions.toggleProductCode());
   }
 }
