@@ -1,7 +1,18 @@
 <h3>{{title}}</h3>
 
+<label>
+  <input type="checkbox"
+  (change)="checkChanged()"
+  [checked]="showProductCode" />
+
+  Display Product Code
+</label>
+
 <ul>
   <li *ngFor="let product of products">
-    {{product.serialNo}} {{product.name}}
+    <span *ngIf="showProductCode">
+      {{product.serialNo}}
+    </span>
+    {{product.name}}
   </li>
 </ul>

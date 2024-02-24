@@ -28,6 +28,7 @@ import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component
 import { UsersComponent } from './components/users/users.component';
 import { FirstInterceptor } from './services/first-interceptor';
 import { SecondInterceptor } from './services/second-interceptor';
+import { StoreModule } from '@ngrx/store';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { SecondInterceptor } from './services/second-interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({}, {}),
 
   ],
   providers: [
