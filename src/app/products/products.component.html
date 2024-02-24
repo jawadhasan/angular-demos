@@ -8,10 +8,10 @@
   Display Product Code
 </label>
 
-<ul>
+<ul *ngIf="products$ | async as products">
   <li *ngFor="let product of products">
     <span *ngIf="showProductCode">
-      {{product.serialNo}}
+      {{product.productCode}}
     </span>
     {{product.name}}
   </li>

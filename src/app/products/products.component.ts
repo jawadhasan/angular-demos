@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
 import { Store } from '@ngrx/store';
+import { State, getShowProductCode } from './state/productReducer';
+import { ProductsService } from './products.service';
+import { EMPTY, catchError } from 'rxjs';
 
 @Component({
   selector: 'products',
@@ -12,21 +14,27 @@ export class ProductsComponent implements OnInit {
   showProductCode: boolean = false;
   products: any[] = [];
 
-  constructor(private store: Store<any>, private dataService: DataService) {}
+  products$ = this.productsService.products$.pipe(
+    catchError((err) => EMPTY)
+  );
+
+
+  constructor(private store: Store<State>, private productsService: ProductsService) {}
 
   ngOnInit(): void {
-    this.products = this.dataService.getProducts();
 
-    //subscribing to store to get changes
-    this.store.select('products').subscribe(products => {
-      this.showProductCode = products.showProductCode;
-    });
+    // this.store.select('products').subscribe(products => {
+    //   this.showProductCode = products.showProductCode;
+    // });
+
+      //todo: unsubscribe
+    this.store.select(getShowProductCode).subscribe(
+      showProductCode => this.showProductCode = showProductCode
+    )
 
   }
 
   checkChanged() {
-    // this.showProductCode = !this.showProductCode;
-    console.log('check changed');
     this.store.dispatch({
       type: '[Product] Toggle Product Code',
     });

@@ -62,7 +62,6 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ProductModule,
     SharedModule,
     FormsModule,
     ReactiveFormsModule,

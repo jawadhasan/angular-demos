@@ -11,7 +11,7 @@ describe('ProductsComponent', () => {
   } as any;
 
   beforeEach(() => {
-    component = new ProductsComponent(fakeDataService);
+    component = new ProductsComponent({},fakeDataService);
   });
 
   it(`should have a component`, () => {

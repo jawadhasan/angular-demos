@@ -4,6 +4,13 @@ import { ProductsComponent } from './products.component';
 import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/productReducer';
+import { RouterModule, Routes } from '@angular/router';
+
+
+const routes: Routes = [
+  { path: '', component: ProductsComponent },
+
+];
 
 @NgModule({
   declarations: [
@@ -13,6 +20,7 @@ import { productReducer } from './state/productReducer';
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule.forChild(routes),
     StoreModule.forFeature('products', productReducer)
   ]
 })
