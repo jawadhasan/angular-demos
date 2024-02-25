@@ -1,0 +1,16 @@
+#circle{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+}
+
+
+#circle-blue{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: rgb(43, 32, 141);
+  position: absolute;
+}

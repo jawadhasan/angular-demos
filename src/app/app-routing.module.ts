@@ -9,6 +9,7 @@ import { FormsSampleComponent } from './components/sample/forms-sample.component
 import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.component';
 import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
 import { UsersComponent } from './components/users/users.component';
+import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./products/product.module').then((m) => m.ProductModule),
   },
+  { path: 'flexdemo', component: FlexBoxDemoComponent },
   { path: 'sample', component: SampleComponent },
   { path: 'forms', component: FormsSampleComponent },
   { path: 'canvas', component: CanvasDemoComponent },

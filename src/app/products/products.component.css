@@ -1,6 +1,21 @@
+
+.flex-container{
+  display: flex;
+  padding: 5px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.flex-item{
+  width: 50%;
+  border: 1px solid black;
+}
 .hide-panel {
   display: none !important;
 }
 ul {
   list-style-type: none;
 }
+
+
+

@@ -1,3 +1,13 @@
+
+<div>[x:{{coordinates.x}}, y:{{coordinates.y}}]</div>
+
+<div id="circle"></div>
+
+<div id="circle-blue"
+[style.left.px]="coordinates.x"
+[style.top.px]="coordinates.y">
+</div>
+
 <p #para>see console for the output</p>
 <button #myButton>Click</button>
 
@@ -42,3 +52,5 @@
 <button class="btn btn-primary" (click)="raiseEvent()">
   EventBus - Raise
 </button>
+
+

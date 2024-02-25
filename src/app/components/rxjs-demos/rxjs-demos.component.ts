@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  HostListener,
   OnDestroy,
   OnInit,
   ViewChild,
@@ -23,6 +24,8 @@ import {
   BehaviorSubject,
   ReplaySubject,
   AsyncSubject,
+  filter,
+  delay,
 } from 'rxjs';
 
 import { allProducts, allCategories } from '../../data';
@@ -40,6 +43,13 @@ import {
 export class RxjsDemosComponent implements AfterViewInit {
   apples$: any[] = ['Apple1', 'Apple2'];
 
+  coordinates:{ x:number, y:number}={x:0, y:0};
+
+  @HostListener('click', ['$event'])
+  onHostClick(event:Event){
+    console.log('clicked on host', event)
+  }
+
   @ViewChild('para') para: ElementRef;
   @ViewChild('myButton') myButton: ElementRef;
 
@@ -52,9 +62,9 @@ export class RxjsDemosComponent implements AfterViewInit {
       () => console.log('para clicked')
     );
 
-    fromEvent(this.myButton.nativeElement, 'click').subscribe((e) => {
+  const clickStream$ =  fromEvent(this.myButton.nativeElement, 'click').subscribe((e) => {
       console.log('button clicked', e);
-      console.log('RxJS concat(allProducts$, allCategories$)')
+      console.log('RxJS concat(allProducts$, allCategories$)');
 
       //generally we want to perform some actions
       let allProucts$ = from(allProducts);
@@ -67,6 +77,28 @@ export class RxjsDemosComponent implements AfterViewInit {
 
     //interval
     //const num = interval(1000).subscribe(console.log);
+
+    let circle = document.getElementById('circle');
+
+   const mouseStream$ = fromEvent<MouseEvent>(document, 'mousemove') //or window click
+    .pipe(
+      map((e: MouseEvent) => {
+        return {
+          x: e.clientX,
+          y: e.clientY,
+        };
+      }),
+    // filter(value=> value.x < 500), //filtering | limiting mouseMove on x-axis
+     delay(300), //adding delay
+     tap((location) => console.log(location))
+    ).subscribe(value=>{
+      circle!.style.left = `${value.x}px`;
+      circle!.style.top = `${value.y+5}px`;
+
+      this.coordinates.x=value.x;
+      this.coordinates.y=value.y;
+    });
+
   }
 
   offFromConcatExample() {

@@ -1,18 +1,11 @@
-<h3>{{title}}</h3>
+<div class='flex-container'>
 
-<label>
-  <input type="checkbox"
-  (change)="checkChanged()"
-  [checked]="showProductCode" />
+  <div class="flex-item">
+    <app-product-list></app-product-list>
+  </div>
+  <div class="flex-item">
+    <app-product-edit></app-product-edit>
+  </div>
 
-  Display Product Code
-</label>
 
-<ul *ngIf="products$ | async as products">
-  <li *ngFor="let product of products">
-    <span *ngIf="showProductCode">
-      {{product.productCode}}
-    </span>
-    {{product.name}}
-  </li>
-</ul>
+</div>

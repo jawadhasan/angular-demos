@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
 import { RouterModule, Routes } from '@angular/router';
-
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 const routes: Routes = [
   { path: '', component: ProductsComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     ProductsComponent,
-
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,

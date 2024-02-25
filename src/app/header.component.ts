@@ -18,6 +18,9 @@ import { Router } from '@angular/router';
       </li>
 
       <li class="nav-item">
+        <a class="nav-link" routerLink="/flexdemo">Flex-demo</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" routerLink="/sample">Sample</a>
       </li>
 
@@ -47,10 +50,6 @@ import { Router } from '@angular/router';
 
       <li class="nav-item">
         <a class="nav-link" routerLink="/notes">Notes</a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/about">About <span class="sr-only"></span></a>
       </li>
 
       <!-- <li class="nav-item">

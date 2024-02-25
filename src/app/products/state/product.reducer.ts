@@ -30,10 +30,10 @@ export const getShowProductCode = createSelector(
   state=> state.showProductCode //projector function
 );
 
-// export const getCurrentProduct = createSelector(
-//   getProductFeatureState,
-//   state=> state.currentProduct
-// )
+export const getCurrentProduct = createSelector(
+  getProductFeatureState,
+  state=> state.currentProduct
+)
 export const getProducts = createSelector(
   getProductFeatureState,
   state=> state.products
@@ -45,12 +45,12 @@ export const getCurrentProductId = createSelector(
 )
 
 //composing
-export const getCurrentProduct = createSelector(
-  getProductFeatureState,
-  getCurrentProductId,
-  (state, currentProductId) =>
-  state.products.find(p=> p.id === currentProductId)
-)
+// export const getCurrentProduct = createSelector(
+//   getProductFeatureState,
+//   getCurrentProductId,
+//   (state, currentProductId) =>
+//   state.products.find(p=> p.id === currentProductId)
+// )
 
 
 
