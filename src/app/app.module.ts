@@ -33,6 +33,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.component';
 import { BasicDemosComponent } from './basic-demos/basic-demos.component';
+import { KonvaDemoComponent } from './konva-demo/konva-demo.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { BasicDemosComponent } from './basic-demos/basic-demos.component';
     RxjsDemosComponent,
     UsersComponent,
     FlexBoxDemoComponent,
-    BasicDemosComponent
+    BasicDemosComponent,
+    KonvaDemoComponent
   ],
   imports: [
     BrowserModule,

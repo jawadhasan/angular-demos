@@ -11,6 +11,7 @@ import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component
 import { UsersComponent } from './components/users/users.component';
 import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.component';
 import { BasicDemosComponent } from './basic-demos/basic-demos.component';
+import { KonvaDemoComponent } from './konva-demo/konva-demo.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
 
   { path: 'devices', component: DevicesComponent },
   { path: 'notes', component: NotesListComponent },
+  { path: 'konvademo', component: KonvaDemoComponent },
 
 
   { path: 'about', component: AboutComponent },
