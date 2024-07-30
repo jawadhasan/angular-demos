@@ -11,6 +11,7 @@ export class KonvaDemoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.sampleKonvaSetup();
 
   }
 
@@ -20,8 +21,10 @@ export class KonvaDemoComponent implements OnInit {
 // first we need to create a stage
 var stage = new Konva.Stage({
   container: 'konva-container',   // id of container <div>
-  width: 200,
-  height: 200
+  // width: 200,
+  // height: 200
+  width: window.innerWidth - 100,
+  height: window.innerHeight - 150
 });
 
 // then create layer
