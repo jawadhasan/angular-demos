@@ -32,6 +32,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.component';
+import { BasicDemosComponent } from './basic-demos/basic-demos.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.c
     CanvasDemoComponent,
     RxjsDemosComponent,
     UsersComponent,
-    FlexBoxDemoComponent
+    FlexBoxDemoComponent,
+    BasicDemosComponent
   ],
   imports: [
     BrowserModule,

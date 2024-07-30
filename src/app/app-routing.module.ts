@@ -10,6 +10,7 @@ import { CanvasDemoComponent } from './components/canvas-demo/canvas-demo.compon
 import { RxjsDemosComponent } from './components/rxjs-demos/rxjs-demos.component';
 import { UsersComponent } from './components/users/users.component';
 import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.component';
+import { BasicDemosComponent } from './basic-demos/basic-demos.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,8 @@ const routes: Routes = [
   { path: 'canvas', component: CanvasDemoComponent },
   { path: 'rxjs', component: RxjsDemosComponent },
   { path: 'users', component: UsersComponent },
+  { path: 'basicdemos', component: BasicDemosComponent },
+
 
   {
     path: 'quotes',

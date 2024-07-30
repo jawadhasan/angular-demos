@@ -1,0 +1,15 @@
+<h3>Basic Demos</h3>
+
+<hr />
+
+<div class="button-container">
+  <ng-container *ngFor="let link of links">
+    <button class="btn btn-primary" (click)="gotoLink(link.link)">
+      {{link.text}}
+    </button> |
+  </ng-container>
+</div>
+
+  <hr />
+  <!-- <Button class="btn btn-primary" (click)="gotoLink('rxjs')">RxJS</Button> |
+  <Button class="btn btn-primary" (click)="gotoLink('products')">Products (Redux)</Button> | -->
