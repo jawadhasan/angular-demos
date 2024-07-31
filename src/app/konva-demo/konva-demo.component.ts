@@ -10,6 +10,20 @@ export class KonvaDemoComponent implements OnInit {
   stage: any; //konva stage
   layer: any; //konva layer
 
+  tr = new Konva.Transformer();
+
+  tr1 = new Konva.Transformer({
+    // centeredScaling: true,
+    // keepRatio: true,
+    anchorSize: 20,
+    anchorCornerRadius: 5,
+    anchorFill: 'red',
+    anchorStroke: 'black',
+    anchorStrokeWidth: 2,
+    borderEnabled: true,
+    enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+  });
+
   constructor() {}
 
   ngOnInit(): void {
@@ -41,6 +55,12 @@ export class KonvaDemoComponent implements OnInit {
 
     // add the shape to the layer
     this.layer.add(circle);
+
+    //add transformer to layer
+    this.layer.add(this.tr);
+
+    // connect the transformer to the group/object.
+    this.tr.nodes([circle]);
 
     // add the layer to the stage
     this.stage.add(this.layer);
