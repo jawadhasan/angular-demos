@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
     <ul class="navbar-nav">
 
     <li class="nav-item">
-        <a class="nav-link" routerLink="/konvademo">Konva</a>
+        <a class="nav-link" routerLink="/konvademo">Stage</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/users">Users</a>
