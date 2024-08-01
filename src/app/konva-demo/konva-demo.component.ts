@@ -10,9 +10,9 @@ export class KonvaDemoComponent implements OnInit {
   stage: any; //konva stage
   layer: any; //konva layer
 
-  tr = new Konva.Transformer();
+  tr1 = new Konva.Transformer();
 
-  tr1 = new Konva.Transformer({
+  tr = new Konva.Transformer({
     // centeredScaling: true,
     // keepRatio: true,
     anchorSize: 20,
