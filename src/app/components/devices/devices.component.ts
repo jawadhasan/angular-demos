@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { DeviceService } from './device.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-devices',
   template: `<div>
-    <h3>Devices</h3>
-    <button class="btn btn-primary" (click)="register()" *ngIf="!addMode">
+    <div class="flex-container bg-light">
+      <div class="flex-item"><h3>Devices</h3></div>
+      <div class="flex-item">
+      <button class="btn btn-primary" (click)="register()" *ngIf="!addMode">
       + Register
     </button>
-    <hr />
+      </div>
+    </div>
 
     <div *ngIf="!addMode" class="row">
       Filter:
@@ -32,7 +36,9 @@ import { DeviceService } from './device.service';
         </div>
       </div>
 
-      <div class="col col-md-4 bg-light">Col-2</div>
+      <div class="col col-md-4 bg-light">COL-2
+
+      </div>
     </div>
 
     <!-- <div class="row card-group">
@@ -52,13 +58,13 @@ import { DeviceService } from './device.service';
       ></app-device-create>
     </div>
   </div>`,
-  styles: [''],
+  styles: ['.flex-container{display:flex;justify-content:space-between;}'],
 })
 export class DevicesComponent implements OnInit {
   addMode: boolean = false;
   devices: any = [];
   filteredDevices: any[]=[];
-
+  iframeUrl:any;
   // listFilter:string="";
   private _listFilter: string;
   get listFilter(): string {
@@ -82,6 +88,9 @@ export class DevicesComponent implements OnInit {
     this.deviceService.deviceClicked.subscribe((device: any) => {
       alert(device.name + ' clicked event notified in devices.component');
     });
+
+
+
   }
 
   register() {

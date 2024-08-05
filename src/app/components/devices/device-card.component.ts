@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DeviceService } from './device.service';
 import { ToastrService } from 'src/app/services/toastr.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,11 +15,12 @@ import { ToastrService } from 'src/app/services/toastr.service';
 
       <p class="card-text">IP {{ device.ip }} : Port {{ device.port }}</p>
       <p>{{ device.description }}</p>
-      <p>Status</p>
+      <p>Status <b>{{device.status}}</b></p>
+      <p>Protocol <b>{{device.protocol}}</b></p>
       <div class="card-footer ">
-        <button (click)="clicked()" class="btn btn-warning">Click</button>
-        &nbsp;
-        <button (click)="detailClicked()" class="btn btn-info">Details</button>
+        <button (click)="clicked()" class="btn btn-warning">Click</button>&nbsp;
+        <button (click)="detailClicked()" class="btn btn-secondary">Details</button>&nbsp;
+        <button (click)="remoteClicked()" class="btn btn-info">Remote</button>
       </div>
     </div>
   </div>`,
@@ -28,7 +30,7 @@ export class DeviceCardComponent implements OnInit {
   @Input() device: any;
   @Output() demo = new EventEmitter<any>();
 
-  constructor(private toastr:ToastrService ,private deviceService: DeviceService) {}
+  constructor(private router:Router, private toastr:ToastrService ,private deviceService: DeviceService) {}
 
   ngOnInit(): void {}
 
@@ -38,6 +40,13 @@ export class DeviceCardComponent implements OnInit {
   }
 
   detailClicked() {
-    this.toastr.success(this.device.name);
+    this.toastr.warning(`details ${this.device.name} `);
+    //todo details navigation
+
+  }
+
+  remoteClicked(){
+    this.toastr.success(`Remote ${this.device.name} `);
+    this.router.navigate(["devices/", this.device.id]);
   }
 }

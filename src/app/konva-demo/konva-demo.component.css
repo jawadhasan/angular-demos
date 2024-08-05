@@ -1,3 +1,14 @@
+.editor-div {
+  display: flex;
+}
+
+.toolbar {
+  display: flex;
+  height: 40px;
+  background-color:#000000;
+}
+
 #konva-container{
+  display: flex;
   border: 1px solid blue;
 }

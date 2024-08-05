@@ -7,6 +7,8 @@ import Konva from 'konva';
   styleUrls: ['./konva-demo.component.css'],
 })
 export class KonvaDemoComponent implements OnInit {
+  opts:any; //options
+
   stage: any; //konva stage
   layer: any; //konva layer
 
@@ -27,6 +29,33 @@ export class KonvaDemoComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
+
+    //intialize options
+    this.opts = {
+      id: 'grid1',
+      stage: this.stage,
+      origin: { x: 0, y: 0 },
+      range: {
+        posX: 800,
+        posY: 800,
+        negX: -200,
+        negY: -100,
+        width: 0,
+        height: 0,
+        minY: 0,
+      },
+      flipY: false,
+      direction: 'y-dn', //'y-up' 'y-dn\
+      stepX: 50,
+      stepY: 50,
+      showGrid: true,
+      defaultGridSize: `800x800`, //hard-coded for now
+      zoomStep: 0.2,
+      scale: 1,
+      enableWheel: false,
+    };
+
+    //initilize konva
     this.sampleKonvaSetup();
   }
 
@@ -36,7 +65,7 @@ export class KonvaDemoComponent implements OnInit {
       container: 'konva-container', // id of container <div>
       // width: 200,
       // height: 200
-      width: window.innerWidth - 100,
+      width: window.innerWidth - 200,
       height: window.innerHeight - 150,
     });
 
@@ -68,4 +97,30 @@ export class KonvaDemoComponent implements OnInit {
     // draw the image
     this.layer.draw();
   }
+
+
+
+  //TOOLBAR
+  clearSelection(){
+
+  }
+  addText() {
+    var tempId = Math.floor(Date.now() / 1000).toString(); //+Math.random().toString(36); //.valueOf().toString(36)
+    console.log(tempId);
+
+    let txtItem = new Konva.Text({
+      x: this.opts.origin.x,
+      y: this.opts.origin.y,
+      text: `${tempId}_${new Date()}`,
+      fontSize: 30,
+      fontFamily: 'Calibri',
+      fill: 'black',
+      draggable: true,
+      id: tempId,
+    });
+
+    this.layer.add(txtItem);
+  }
+
+
 }

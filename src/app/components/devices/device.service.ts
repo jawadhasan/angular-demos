@@ -1,5 +1,6 @@
 import { EventEmitter, Injectable } from "@angular/core";
-import { IDevice } from "./device";
+import { IDevice, protocol } from "./device";
+import { Observable, of } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,55 +14,30 @@ export class DeviceService {
   private devices: any= [
     {
      id: 123,
-     ip: "192.168.0.201",
+     ip: "127.0.0.1",
      port: 502,
-     name: "Device-1",
+     name: "VirtualIJP",
      status: "Stop",
-     description: "This is a test description for device-1"
+     protocol: protocol.Modbus,
+     description: "This is a test description for VirtualIJP"
     },
-    {
-
-      id: 456,
-      ip: "192.168.0.202",
-      port: 502,
-      name: "local",
-      status: "Stop",
-      description: "This is a test description for device-2"
-     },
-     {
-
-      id: 457,
-      ip: "192.168.0.203",
-      port: 502,
-      name: "lab",
-      status: "Stop",
-      description: "This is a test description for device-3"
-     },
-     {
-
-      id: 458,
-      ip: "192.168.0.204",
-      port: 502,
-      name: "Device-4",
-      status: "Stop",
-      description: "This is a test description for device-4"
-     },
      {
 
       id: 459,
-      ip: "192.168.0.205",
-      port: 502,
-      name: "Device-5",
-      status: "Stop",
-      description: "This is a test description for device-5"
+      ip: "10.10.10.1",
+      port: 18080,
+      name: "CPF-Laser",
+      status: "Idle",
+      protocol: protocol.Http,
+      description: "This is a test description for CPF-Laser device"
      }
   ];
   constructor() {}
 
 
-// getDevice(id:number):IDevice{
-//   return this.devices.find(d=> d.id === id)
-// }
+getDevice(id:number):Observable<any>{
+  return of(this.devices.find(d=> d.id === id))
+}
 
   getDevices() {
     // .slice() returning a copy, not the original array so that it cannot be modified outside this service.
@@ -71,4 +47,6 @@ export class DeviceService {
   addDevice(deviceData){
     this.devices.push(deviceData);
   }
+
+
 }

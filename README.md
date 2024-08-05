@@ -33,6 +33,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Run `ng g s services/data` or `ng g s ./quotes/services/quotes` for adding a service.
 
+## Adding a Module
+
+`ng g module devices –m app.module`
+
 ## Adding a component to a module
 
 Run `ng g c ./quotes/components/quotes-list  --module quotes.module` for adding a component to a module.
