@@ -35,7 +35,14 @@ import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.c
 import { BasicDemosComponent } from './basic-demos/basic-demos.component';
 import { KonvaDemoComponent } from './konva-demo/konva-demo.component';
 import { DeviceDetailsComponent } from './components/devices/device-details.component';
+import { ApiModule, Configuration, ConfigurationParameters } from './openapi';
 
+export function apiConfigFactory(): Configuration {
+  const params: ConfigurationParameters = {
+    basePath: "https://kjsa0fp0tb.execute-api.eu-central-1.amazonaws.com/Prod",
+  };
+  return new Configuration(params);
+}
 
 @NgModule({
   declarations: [
@@ -80,7 +87,7 @@ import { DeviceDetailsComponent } from './components/devices/device-details.comp
       maxAge: 25,
       logOnly: environment.production
     }),
-
+    ApiModule.forRoot(apiConfigFactory)
   ],
   providers: [
     HttpClient,
