@@ -28,7 +28,6 @@ export class ProductListComponent implements OnInit {
     // Used to highlight the selected product in the list
     selectedProduct: Product | null;
 
-
   constructor(private store: Store<State>, private productService: ProductService) {}
 
   ngOnInit(): void {
@@ -59,10 +58,8 @@ export class ProductListComponent implements OnInit {
     // this.store.dispatch({
     //   type: '[Product] Toggle Product Code',
     // });
-
     this.store.dispatch(ProductActions.toggleProductCode());
   }
-
 
   productSelected(product: Product): void {
     // this.productService.changeSelectedProduct(product);
@@ -74,6 +71,5 @@ export class ProductListComponent implements OnInit {
     // this.productService.changeSelectedProduct(this.productService.newProduct());
     this.store.dispatch(ProductActions.initializeCurrentProduct());
   }
-
 
 }
