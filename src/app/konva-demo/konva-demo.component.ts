@@ -111,7 +111,7 @@ export class KonvaDemoComponent implements OnInit {
     let txtItem = new Konva.Text({
       x: this.opts.origin.x,
       y: this.opts.origin.y,
-      text: `${tempId}_${new Date()}`,
+      text: `${tempId}}`,
       fontSize: 30,
       fontFamily: 'Calibri',
       fill: 'black',
