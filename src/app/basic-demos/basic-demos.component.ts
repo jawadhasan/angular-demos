@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TokenService } from '../openapi';
+import {RandomGen} from '../utils/random-gen';
 
 @Component({
   selector: 'app-basic-demos',
@@ -9,6 +10,7 @@ import { TokenService } from '../openapi';
 })
 export class BasicDemosComponent implements OnInit {
   token: string = '';
+  clienttoken: string ='';
   links: any[] = [
     { id: '1', text: 'RxJS', link: 'rxjs' },
     { id: '2', text: 'Products (Redux)', link: 'products' },
@@ -24,7 +26,6 @@ export class BasicDemosComponent implements OnInit {
   constructor(private router: Router, private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    console.log(this.links);
   }
 
   gotoLink(link: string): void {
@@ -37,5 +38,9 @@ export class BasicDemosComponent implements OnInit {
     .subscribe((d) => {
       this.token = d;
     });
+  }
+
+  generateClientToken(){
+    this.clienttoken=RandomGen.getUUID();
   }
 }
