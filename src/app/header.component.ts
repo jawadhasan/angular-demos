@@ -12,6 +12,9 @@ import { Component } from '@angular/core';
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
     <li class="nav-item">
+        <a class="nav-link" routerLink="/books">Books</a>
+      </li>
+    <li class="nav-item">
         <a class="nav-link" routerLink="/devices">Devices</a>
       </li>
     <li class="nav-item">

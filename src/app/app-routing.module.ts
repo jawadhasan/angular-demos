@@ -13,6 +13,7 @@ import { FlexBoxDemoComponent } from './components/flex-box-demo/flex-box-demo.c
 import { BasicDemosComponent } from './basic-demos/basic-demos.component';
 import { KonvaDemoComponent } from './konva-demo/konva-demo.component';
 import { DeviceDetailsComponent } from './components/devices/device-details.component';
+import { BooksComponent } from './books/books.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./products/product.module').then((m) => m.ProductModule),
   },
+  { path: 'books', component: BooksComponent },
   { path: 'flexdemo', component: FlexBoxDemoComponent },
   { path: 'sample', component: SampleComponent },
   { path: 'forms', component: FormsSampleComponent },

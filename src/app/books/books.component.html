@@ -1,0 +1,27 @@
+<h4>Books World</h4>
+<p>{{msg}}</p>
+<br />
+
+<div class="book-page">
+
+   <!-- Categories -->
+   <div *ngIf="booksCategories$ | async as booksCategories" class="page-item">
+
+    <ul class="list-group" *ngFor="let category of booksCategories">
+      <button class="list-group-item" [ngClass]="category.id === selectedCategoryId ? 'active': ''" (click)="selectCategory(category)">{{category.categoryName}}</button>
+    </ul>
+
+  </div>
+
+  <!-- Books -->
+
+  <div *ngIf="books$ | async as books" class="books-list">
+   <b>Count:</b> {{books.length}}
+    <ul class="list-group" *ngFor="let book of books">
+      <li>{{book.bookName}}</li>
+    </ul>
+  </div>
+
+</div>
+
+

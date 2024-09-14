@@ -1,0 +1,7 @@
+.book-page{
+  display: flex;
+}
+
+.books-list{
+  padding-left: 45px;
+}

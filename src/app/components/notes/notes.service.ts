@@ -23,6 +23,7 @@ export class NotesService {
 
   constructor(private httpClient: HttpClient) {}
 
+  //emit value into action-stream
   selectCategory(category: any) {
     console.log(category);
     this.selectedCategorySubject.next(category);

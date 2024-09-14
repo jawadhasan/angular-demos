@@ -36,6 +36,7 @@ import { BasicDemosComponent } from './basic-demos/basic-demos.component';
 import { KonvaDemoComponent } from './konva-demo/konva-demo.component';
 import { DeviceDetailsComponent } from './components/devices/device-details.component';
 import { ApiModule, Configuration, ConfigurationParameters } from './openapi';
+import { BooksComponent } from './books/books.component';
 
 export function apiConfigFactory(): Configuration {
   const params: ConfigurationParameters = {
@@ -72,7 +73,8 @@ export function apiConfigFactory(): Configuration {
     UsersComponent,
     FlexBoxDemoComponent,
     BasicDemosComponent,
-    KonvaDemoComponent
+    KonvaDemoComponent,
+    BooksComponent
   ],
   imports: [
     BrowserModule,
