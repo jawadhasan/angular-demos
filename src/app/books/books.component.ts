@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BooksService } from './books.service';
 
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css']
+  styleUrls: ['./books.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BooksComponent {
-  msg:string='';
-  selectedCategoryId:number=0;
   selectedBookId:number=0;
+  selectedCategoryId:number=0;
 
   booksCategories$ = this.booksService.booksCategories$;
   books$ = this.booksService.books$;
@@ -17,14 +17,13 @@ export class BooksComponent {
 
   constructor(private booksService:BooksService) { }
 
-  selectCategory(category:any){
-    this.booksService.selectCategory(category.id);
-    this.selectedCategoryId=category.id;
+  selectBookCategory(categoryId:number){
+    this.selectedCategoryId=categoryId;
+    this.booksService.selectCategory(categoryId);
+
   }
-
   selectBook(book:any){
-    this.booksService.selectBook(book.id);
     this.selectedBookId=book.id;
-
+    this.booksService.selectBook(book.id);
   }
 }

@@ -1,8 +1,12 @@
 .book-page{
   display: flex;
- justify-content: space-between;
+ justify-content:flex-start;
 }
 
 .books-list{
   padding-left: 45px;
+}
+
+.selected-book{
+  margin-left: 20px;
 }

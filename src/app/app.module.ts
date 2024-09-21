@@ -75,7 +75,7 @@ export function apiConfigFactory(): Configuration {
     BasicDemosComponent,
     KonvaDemoComponent,
     BooksComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

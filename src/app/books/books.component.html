@@ -1,5 +1,4 @@
 <h4>Books World</h4>
-<p>{{msg}}</p>
 <br />
 
 <div class="book-page">
@@ -7,23 +6,26 @@
    <!-- Categories -->
 
    <div>
+    <b>Categories</b>
     <div *ngIf="booksCategories$ | async as booksCategories" class="page-item">
-      <b>Categories</b>
       <ul class="list-group" *ngFor="let category of booksCategories">
-        <button class="list-group-item" [ngClass]="category.id === selectedCategoryId ? 'active': ''" (click)="selectCategory(category)">{{category.categoryName}}</button>
+        <button class="list-group-item" (click)="selectBookCategory(category.id)" [ngClass]="category.id === selectedCategoryId ? 'active': ''">
+          {{category.categoryName}}
+        </button>
       </ul>
-
     </div>
    </div>
 
 
 
   <!-- Books -->
-<div>
-  <div *ngIf="books$ | async as books" class="books-list">
-    <b>Books Count:</b> {{books.length}}
+<div class="books-list">
+  <b>Books</b>
+  <div *ngIf="books$ | async as books" >
      <ul class="list-group" *ngFor="let book of books">
-       <button class="list-group-item" [ngClass]="book.id === selectedBookId ? 'active': ''"  (click)="selectBook(book)">{{book.bookName}}</button>
+       <button class="list-group-item"  (click)="selectBook(book)" [ngClass]="book.id === selectedBookId ? 'active': ''" >
+        {{book.bookName}}
+      </button>
      </ul>
    </div>
 
@@ -31,8 +33,8 @@
 
 
 <!-- Selected Book -->
-<div style="width: 18rem;">
-  <b>Book</b>
+<div style="width: 18rem;" class="selected-book">
+  <b>Selected Book</b>
   <div class="card"   *ngIf="selectedBook$ | async as selectedBook">
     <div class="card-body">
       <h5 class="card-title">{{selectedBook.bookName}}</h5>
