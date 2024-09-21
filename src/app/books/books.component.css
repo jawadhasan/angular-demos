@@ -1,5 +1,6 @@
 .book-page{
   display: flex;
+ justify-content: space-between;
 }
 
 .books-list{
