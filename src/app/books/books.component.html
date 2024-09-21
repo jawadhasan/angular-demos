@@ -35,14 +35,40 @@
 <!-- Selected Book -->
 <div style="width: 18rem;" class="selected-book">
   <b>Selected Book</b>
-  <div class="card"   *ngIf="selectedBook$ | async as selectedBook">
+
+  <div *ngIf="selectedBook$ | async as selectedBook">
+  <div class="card">
     <div class="card-body">
-      <h5 class="card-title">{{selectedBook.bookName}}</h5>
-      <p class="card-text">Category: {{selectedBook.bookCategoryId}}</p>
+      <h5 class="card-title">{{selectedBook.bookname}}</h5>
+      <p class="card-text">Category: {{selectedBook.bookcategoryid}}</p>
       <p class="card-text">Price: {{selectedBook.price}}</p>
     </div>
   </div>
+  </div>
+
+  <div *ngIf="bookAuthors$ | async as bookAuthors">
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Author</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of bookAuthors | keyvalue">
+          <td>{{item.value['id']}}</td>
+          <td>{{item.value['authorName']}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
 </div>
+
+
+
 
 
 </div>

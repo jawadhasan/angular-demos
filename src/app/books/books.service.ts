@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {combineLatest,  Observable,  Subject,  throwError,} from 'rxjs';
-import { map, catchError, switchMap } from 'rxjs/operators';
+import {combineLatest,  from,  Observable,  of,  Subject,  throwError,} from 'rxjs';
+import { map, catchError, switchMap, mergeMap, toArray, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,7 @@ export class BooksService {
   private selectedBookSub = new Subject<number>();
   selectedBookAction$ = this.selectedBookSub.asObservable();
 
+
   booksCategories$ = this.httpClient
     .get(`${this.booksApi}/categories`)
     .pipe(catchError(this.handleError));
@@ -35,12 +36,14 @@ export class BooksService {
   //this is executing twice??
   books$ = this.selectedCategoryAction$.pipe(
     switchMap(catId => this.httpClient.get<any[]>(`${this.booksApi}/getByCategoryId?catId=${catId}`)
+    .pipe(tap(d=> console.log(d)))
     .pipe(catchError(this.handleError)))
   );
 
   //have one detail and load-book approach
   selectedBook$ = this.selectedBookAction$.pipe(
     switchMap(id=> this.httpClient.get(`${this.booksApi}/${id}`)
+    .pipe(tap(d=> console.log(d)))
     .pipe(catchError(this.handleError)))
   );
 
@@ -49,6 +52,22 @@ export class BooksService {
     map(([books, booksFilterId]) => books.find((b) => b.id === booksFilterId)),
     catchError(this.handleError)
   );
+
+
+  //single supplier approach
+  // bookAuthors$ = this.selectedBook$.pipe(
+  //   switchMap(book=> this.httpClient.get(`${this.booksApi}/book.supplierId`))
+  // )
+
+  bookAuthors$ = this.selectedBook$.pipe(
+    switchMap(book=>
+      from(book.author_ids)
+      .pipe(
+        mergeMap(authorId=> this.httpClient.get(`${this.booksApi}/author/${authorId}`)),
+        toArray())
+    )
+  );
+
 
   constructor(private httpClient: HttpClient) {}
 
