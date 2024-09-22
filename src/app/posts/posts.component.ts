@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostsService } from './posts.service';
-import { BehaviorSubject, switchMap } from 'rxjs';
+import { BehaviorSubject, combineLatest, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-posts',
@@ -9,7 +9,8 @@ import { BehaviorSubject, switchMap } from 'rxjs';
 })
 export class PostsComponent {
 
-  posts$ = this.postsService.postsForUser$;
+  posts$ = this.postsService.postsWithCategories$;
+
 
   private _searchFilter: string = '';
   set searchFilter(value) {

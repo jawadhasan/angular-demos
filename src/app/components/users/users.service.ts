@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, EMPTY, Observable, catchError, tap, throwError } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +36,13 @@ export class UsersService {
           return EMPTY;
         })
       );
+  }
+
+  getuserId(userName:string):Observable<number>{
+   return this.httpClient.get<any>(`${this.usersUrl}/getUsersByName?searchTerm=${userName}`).pipe(
+    catchError(this.handleError),
+    map(users=>(users.length === 0) ? -1 : users[0].id)
+   )
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {combineLatest,  forkJoin,  from,  Observable,  of,  Subject,  throwError,} from 'rxjs';
-import { map, catchError, switchMap, mergeMap, toArray, tap } from 'rxjs/operators';
+import { map, catchError, switchMap, mergeMap, toArray, tap, shareReplay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +26,8 @@ export class BooksService {
 
   booksCategories$ = this.httpClient
     .get(`${this.booksApi}/categories`)
-    .pipe(catchError(this.handleError));
+    .pipe(catchError(this.handleError),
+    shareReplay(1));
 
   // booksOnly$ = this.httpClient
   //   .get(`${this.booksApi}`)
