@@ -1,76 +1,74 @@
-<h4>Books World</h4>
+<h4>Books World - Library</h4>
 <br />
 
 <div class="book-page">
 
-   <!-- Categories -->
+  <!-- Categories -->
 
-   <div>
+  <div>
     <b>Categories</b>
     <div *ngIf="booksCategories$ | async as booksCategories" class="page-item">
       <ul class="list-group" *ngFor="let category of booksCategories">
-        <button class="list-group-item" (click)="selectBookCategory(category.id)" [ngClass]="category.id === selectedCategoryId ? 'active': ''">
+        <button class="list-group-item" (click)="selectBookCategory(category.id)"
+          [ngClass]="category.id === selectedCategoryId ? 'active': ''">
           {{category.categoryName}}
         </button>
       </ul>
     </div>
-   </div>
+  </div>
 
 
 
   <!-- Books -->
-<div class="books-list">
-  <b>Books</b>
-  <div *ngIf="books$ | async as books" >
-     <ul class="list-group" *ngFor="let book of books">
-       <button class="list-group-item"  (click)="selectBook(book)" [ngClass]="book.id === selectedBookId ? 'active': ''" >
-        {{book.bookName}}
-      </button>
-     </ul>
-   </div>
-
-</div>
-
-
-<!-- Selected Book -->
-<div style="width: 18rem;" class="selected-book">
-  <b>Selected Book</b>
-
-  <div *ngIf="selectedBook$ | async as selectedBook">
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{selectedBook.bookname}}</h5>
-      <p class="card-text">Category: {{selectedBook.bookcategoryid}}</p>
-      <p class="card-text">Price: {{selectedBook.price}}</p>
+  <div class="books-list">
+    <b>Books</b>
+    <div *ngIf="books$ | async as books">
+      <ul class="list-group" *ngFor="let book of books">
+        <button class="list-group-item" (click)="selectBook(book)"
+          [ngClass]="book.id === selectedBookId ? 'active': ''">
+          {{book.bookName}}
+        </button>
+      </ul>
     </div>
-  </div>
-  </div>
-
-  <div *ngIf="bookAuthors$ | async as bookAuthors">
-    <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Author</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of bookAuthors | keyvalue">
-          <td>{{item.value['id']}}</td>
-          <td>{{item.value['authorName']}}</td>
-        </tr>
-      </tbody>
-    </table>
 
   </div>
 
+
+  <!-- Selected Book -->
+  <div style="width: 18rem;" class="selected-book">
+    <b>Selected Book Details</b>
+
+    <div *ngIf="currSelectedBook$ | async as sb">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{sb.bookname}}</h5>
+          <p class="card-text">Category: {{sb.bookcategoryid}}</p>
+          <p class="card-text">Price: {{sb.price}}</p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Selected Book Authors -->
+    <div *ngIf="bookAuthors$ | async as bookAuthors">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of bookAuthors | keyvalue">
+            <td>{{item.value['id']}}</td>
+            <td>{{item.value['authorName']}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+  </div>
 
 </div>
-
-
-
-
-
-</div>
-
-

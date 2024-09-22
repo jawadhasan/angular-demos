@@ -13,7 +13,7 @@ export class BooksComponent {
 
   booksCategories$ = this.booksService.booksCategories$;
   books$ = this.booksService.books$;
-  selectedBook$ = this.booksService.selectedBook$;
+  currSelectedBook$ = this.booksService.selectedBook$;
   bookAuthors$ = this.booksService.bookAuthors$;
 
   constructor(private booksService:BooksService) { }
