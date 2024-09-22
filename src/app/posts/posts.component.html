@@ -1,0 +1,36 @@
+  <!-- Posts -->
+  <div class="posts-list">
+    <b>Posts</b>
+
+    <section>
+      Filter By UserName: <input id="searchFilter" name="searchFilter"
+      [(ngModel)]="searchFilter" /> <br />
+      display filter: {{searchFilter}}
+    </section>
+
+    <div *ngIf="posts$ | async as posts">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Category</th>
+            <th>Created</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td>{{post?.id}}</td>
+            <td>{{post?.title}}</td>
+            <td>{{post?.content}}</td>
+            <td>{{post?.categoryId}}</td>
+            <td>{{post?.createdAt | date: 'dd.MM.yyyy hh:mm:ss'}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
